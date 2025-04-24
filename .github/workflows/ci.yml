@@ -21,21 +21,23 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Create and activate virtual environment
+        run: |
+          python -m venv venv  # Create virtual environment
+          source venv/bin/activate  # Activate virtual environment
+          
       - name: Install dependencies
         run: |
-          python -m venv venv  # Create a virtual environment
-          . venv/bin/activate  # Activate the virtual environment (works in bash)
-          pip freeze
+          source venv/bin/activate  # Ensure the virtual environment is active
           python -m pip install --upgrade pip  # Upgrade pip
           pip install -r requirements.txt  # Install dependencies
-
+          
       - name: Run migrations
         run: |
-          . venv/bin/activate  # Ensure the environment is activated before running commands
+          source venv/bin/activate  # Ensure the environment is activated before running commands
           python manage.py migrate  # Run migrations
 
       - name: Run tests
         run: |
-          . venv/bin/activate  # Ensure the environment is activated
-          pip install pytest>=6.0.0
+          source venv/bin/activate  # Ensure the environment is activated before running tests
           python -m pytest --maxfail=1 --disable-warnings -q  # Run tests using pytest
