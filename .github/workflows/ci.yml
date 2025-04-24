@@ -25,6 +25,7 @@ jobs:
         run: |
           python -m venv venv  # Create a virtual environment
           . venv/bin/activate  # Activate the virtual environment (works in bash)
+          pip freeze
           python -m pip install --upgrade pip  # Upgrade pip
           pip install -r requirements.txt  # Install dependencies
 
