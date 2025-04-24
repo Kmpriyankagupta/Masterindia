@@ -40,4 +40,4 @@ jobs:
       - name: Run tests
         run: |
           source venv/bin/activate  # Ensure the environment is activated before running tests
-          python -m pytest --maxfail=1 --disable-warnings -q  # Run tests using pytest
+          python manage.py test # Run tests using pytest
