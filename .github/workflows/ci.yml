@@ -37,4 +37,5 @@ jobs:
       - name: Run tests
         run: |
           . venv/bin/activate  # Ensure the environment is activated
+          pip install pytest>=6.0.0
           python -m pytest --maxfail=1 --disable-warnings -q  # Run tests using pytest
