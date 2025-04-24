@@ -24,20 +24,20 @@ jobs:
       - name: Create and activate virtual environment
         run: |
           python -m venv venv  # Create virtual environment
-          source venv/bin/activate  # Activate virtual environment
-          
+          . venv/bin/activate  # Activate virtual environment
+
       - name: Install dependencies
         run: |
-          source venv/bin/activate  # Ensure the virtual environment is active
+          . venv/bin/activate  # Ensure the virtual environment is active
           python -m pip install --upgrade pip  # Upgrade pip
           pip install -r requirements.txt  # Install dependencies
-          
+
       - name: Run migrations
         run: |
-          source venv/bin/activate  # Ensure the environment is activated before running commands
+          . venv/bin/activate  # Ensure the environment is activated before running commands
           python manage.py migrate  # Run migrations
 
       - name: Run tests
         run: |
-          source venv/bin/activate  # Ensure the environment is activated before running tests
-          python manage.py test # Run tests using pytest
+          . venv/bin/activate  # Ensure the environment is activated before running tests
+          python manage.py test --verbosity=2  # Run tests using Django's default test runner
